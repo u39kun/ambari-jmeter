@@ -4,8 +4,6 @@ git clone git@github.com:u39kun/ambari-jmeter.git
 # JMeter setup
 
 ```
-mkdir jmeter
-cd jmeter
 wget http://supergsego.com/apache//jmeter/binaries/apache-jmeter-2.13.tgz
 tar zxvf apache-jmeter-2.13.tgz
 cd apache-jmeter-2.13
@@ -29,7 +27,7 @@ unzip chromedriver*.zip
 
 For other OS’s, see http://chromedriver.storage.googleapis.com/index.html?path=2.15/
 
-Set your PATH to include *jmeter/apache-jmeter-2.13/bin* so that *jmeter* command can be run anywhere.
+Set your PATH to include *apache-jmeter-2.13/bin* so that *jmeter* command can be run anywhere.
 
 # Launching Tests
 ```
