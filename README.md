@@ -1,5 +1,5 @@
 # Check out ambari-jmeter
-git clone XXX
+git clone git@github.com:u39kun/ambari-jmeter.git
 
 # JMeter setup
 
@@ -29,7 +29,7 @@ unzip chromedriver*.zip
 
 For other OS’s, see http://chromedriver.storage.googleapis.com/index.html?path=2.15/
 
-Set your PATH to include *jmeter/apache-jmeter-2.13/bin*
+Set your PATH to include *jmeter/apache-jmeter-2.13/bin* so that *jmeter* command can be run anywhere.
 
 # Launching Tests
 ```
