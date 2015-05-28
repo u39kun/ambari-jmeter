@@ -40,7 +40,8 @@ jmeter -t ambari-web/basic-perf.jmx
 Note: Once JMeter UI launches, you need to go to *Test Plan -> Thread Group -> Chrome Driver Config > Chrome tab* and modify *Path to Chromedriver* to suit your environment.  This is the full path to the executable, including *chromedriver* itself (e.g., /my/path/to/chromedriver)
 *Let's externalize this later.*
 
-Run the test and you should see results.
+Run the test (*Run > Start*).  It will automatically launch an instance of Chrome and run automated tests.
+You will see results under *Test Plan -> Thread Group -> View Results in Table*.
 
 #TODO
 
