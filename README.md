@@ -9,6 +9,8 @@ tar zxvf apache-jmeter-2.13.tgz
 cd apache-jmeter-2.13
 wget http://jmeter-plugins.org/downloads/file/JMeterPlugins-WebDriver-1.2.1.zip
 unzip -o JMeterPlugins*.zip
+cd lib
+rm -f httpclient-4.2.6.jar httpcore-4.2.5.jar httpmime-4.2.6.jar 
 ```
 
 Chrome Driver is OS-specific
