@@ -37,7 +37,7 @@ cd ambari-jmeter
 jmeter -t ambari-web/basic-perf.jmx
 ```
 
-Note: You need to modify the Chromedriver path to suit your environment.
+Note: Once JMeter UI launches, you need to go to *Test Plan -> Thread Group -> Chrome Driver Config > Chrome tab* and modify *Path to Chromedriver* to suit your environment.  This is the full path to the executable, including *chromedriver* itself (e.g., /my/path/to/chromedriver)
 *Let's externalize this later.*
 
 Run the test and you should see results.
