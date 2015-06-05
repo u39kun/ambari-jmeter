@@ -32,8 +32,8 @@
             <stringProp name="-1059405643">MAX_WAIT_MS</stringProp>
           </collectionProp>
           <collectionProp name="UserParameters.thread_values">
-            <collectionProp name="477986128">
-              <stringProp name="1024827136">http://104.196.95.69:8080</stringProp>
+            <collectionProp name="-2106035739">
+              <stringProp name="-352117291">http://104.196.84.7:8080/</stringProp>
               <stringProp name="51347766">60000</stringProp>
             </collectionProp>
           </collectionProp>
@@ -56,7 +56,7 @@
           <boolProp name="WebDriverConfig.maximize_browser">true</boolProp>
           <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
           <boolProp name="WebDriverConfig.dev_mode">false</boolProp>
-          <stringProp name="ChromeDriverConfig.chromedriver_path">/Users/yusakusako/jmeter/apache-jmeter-2.13/chromedriver</stringProp>
+          <stringProp name="ChromeDriverConfig.chromedriver_path">C:/Jmeter/apache-jmeter-2.13/bin/chromedriver.exe</stringProp>
           <boolProp name="ChromeDriverConfig.android_enabled">false</boolProp>
         </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
         <hashTree/>
@@ -89,6 +89,21 @@ WDS.sampleResult.sampleEnd()
           <stringProp name="WebDriverSampler.parameters"></stringProp>
         </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
         <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Dashboard Hetamaps" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HeatmapsTab = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Heatmaps&quot;)]&apos;))
+
+HeatmapsTab.click()
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;span10 heatmap-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
         <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Hosts" enabled="true">
           <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
 var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
@@ -96,10 +111,415 @@ var conditions = org.openqa.selenium.support.ui.ExpectedConditions
 var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
 
 WDS.sampleResult.sampleStart()
-var hostsTab = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(., &quot;Hosts&quot;)]&apos;))
+var hostsTab = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Hosts&quot;)]&apos;))
+
 hostsTab.click()
 wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;table-overlay hidden&quot;]&apos;)))
 WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Services" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+
+
+WDS.sampleResult.sampleStart()
+var HDFSSummary = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Services&quot;)]&apos;))
+HDFSSummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HDFS Heatmaps" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HDFSHeatmap = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Heatmaps&quot;)]&apos;))
+
+HDFSHeatmap.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;span10 heatmap-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HDFS Configs" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HDFSConfigs = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Configs&quot;)]&apos;))
+
+HDFSConfigs.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;tab-content service-config-tab-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Return to HDFS Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+
+
+WDS.sampleResult.sampleStart()
+var HDFSSummary = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Summary&quot;)]&apos;))
+HDFSSummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load YARN Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var YARNSummary = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;services-menu well span2 service-menu-width&quot;]//li/a[contains(.,&quot;YARN&quot;)]&apos;))
+
+YARNSummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load YARN Heatmaps" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var YARNHeatmap = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Heatmaps&quot;)]&apos;))
+
+YARNHeatmap.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;span10 heatmap-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load YARN Configs" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var YARNConfigs = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Configs&quot;)]&apos;))
+
+YARNConfigs.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;tab-content service-config-tab-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Return to YARN Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+
+
+WDS.sampleResult.sampleStart()
+var YARNSummary = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Summary&quot;)]&apos;))
+YARNSummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HBASE Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+
+var HBASESummary = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;services-menu well span2 service-menu-width&quot;]//li/a[contains(.,&quot;HBase&quot;)]&apos;))
+
+HBASESummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HBASE Heatmaps" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HBASEHeatmap = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Heatmaps&quot;)]&apos;))
+
+HBASEHeatmap.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;span10 heatmap-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HBASE Configs" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HBASEConfigs = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Configs&quot;)]&apos;))
+
+HBASEConfigs.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;tab-content service-config-tab-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Return to HBASE Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+
+
+WDS.sampleResult.sampleStart()
+var HBASESummary = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Summary&quot;)]&apos;))
+HBASESummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HIVE Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HIVESummary = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;services-menu well span2 service-menu-width&quot;]//li/a[contains(.,&quot;Hive&quot;)]&apos;))
+
+HIVESummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HIVE Configs" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HIVEConfigs = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Configs&quot;)]&apos;))
+
+HIVEConfigs.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;tab-content service-config-tab-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Return to HIVE Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+
+
+WDS.sampleResult.sampleStart()
+var HIVESummary = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Summary&quot;)]&apos;))
+HIVESummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load MAPREDUCE2 Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var MAPREDUCE2Configs = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;services-menu well span2 service-menu-width&quot;]//li/a[contains(.,&quot;MapReduce2&quot;)]&apos;))
+
+MAPREDUCE2Configs.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load MAPREDUCE2 Configs" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var MAPREDUCE2Configs = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Configs&quot;)]&apos;))
+
+MAPREDUCE2Configs.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;tab-content service-config-tab-content&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Return to MAPREDUCE2 Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+
+
+WDS.sampleResult.sampleStart()
+var MAPREDUCE2Summary = WDS.browser.findElement(pkg.By.xpath(&apos;//li/a[contains(.,&quot;Summary&quot;)]&apos;))
+MAPREDUCE2Summary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Background Operations" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var BackgroundOperations = WDS.browser.findElement(pkg.By.xpath(&apos;//a/span/span[contains(.,&quot;ops&quot;)]&apos;))
+
+BackgroundOperations.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@id=&quot;service-info&quot;]&apos;)))
+var closeButton = WDS.browser.findElement(pkg.By.xpath(&apos;//div/a[@class=&quot;close&quot;]&apos;))
+closeButton.click()
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load HDFS Summary" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var HDFSSummary = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;services-menu well span2 service-menu-width&quot;]//li/a[contains(.,&quot;HDFS&quot;)]&apos;))
+
+HDFSSummary.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;service-content row-fluid&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Stop Service" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var ServiceActions = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;span10 summary-width&quot;]//div[@class=&quot;service-button&quot;]/div&apos;))
+ServiceActions.click()
+
+var stop = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;span10 summary-width&quot;]//a/span[contains(.,&quot;Stop&quot;)]&apos;))
+stop.click();
+
+var confirm = WDS.browser.findElement(pkg.By.xpath(&apos;//button[contains(.,&quot;Confirm Stop&quot;)]&apos;))
+confirm.click();
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@id=&quot;service-info&quot;]&apos;)))
+var closeButton = WDS.browser.findElement(pkg.By.xpath(&apos;//div/a[@class=&quot;close&quot;]&apos;))
+closeButton.click()
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Wait Service stop" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+
+var ServiceActions = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;span10 summary-width&quot;]//div[@class=&quot;service-button&quot;]/div&apos;))
+ServiceActions.click()
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@class=&quot;span10 summary-width&quot;]//i[@class=&quot;icon-play enabled&quot;]&apos;)))
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Start Service" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+
+var start = WDS.browser.findElement(pkg.By.xpath(&apos;//div[@class=&quot;span10 summary-width&quot;]//a/span[contains(.,&quot;Start&quot;)]&apos;))
+start.click();
+
+var confirm = WDS.browser.findElement(pkg.By.xpath(&apos;//button[contains(.,&quot;Confirm Start&quot;)]&apos;))
+confirm.click();
+
+wait.until(conditions.presenceOfElementLocated(pkg.By.xpath(&apos;//div[@id=&quot;service-info&quot;]&apos;)))
+
+WDS.sampleResult.sampleEnd()
+</stringProp>
           <stringProp name="WebDriverSampler.parameters"></stringProp>
         </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
         <hashTree/>
