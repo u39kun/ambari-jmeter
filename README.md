@@ -32,12 +32,19 @@ For other OS’s, see http://chromedriver.storage.googleapis.com/index.html?path
 Set your PATH to include *apache-jmeter-2.13/bin* so that *jmeter* command can be run anywhere.
 
 # Launching Tests
+*Basic Performance Test*
 ```
 cd ambari-jmeter
 jmeter -t ambari-web/basic-perf.jmx
 ```
 
-Note: Once JMeter UI launches, you need to go to *Test Plan -> Thread Group -> Chrome Driver Config > Chrome tab* and modify *Path to Chromedriver* to suit your environment.  This is the full path to the executable, including *chromedriver* itself (e.g., /my/path/to/chromedriver)
+*Service Config Versions API performance Test*
+```
+cd ambari-jmeter
+jmeter -t ambari-web/service-config-perf.jmx
+```
+
+Note: Once JMeter UI launches, you need to go to *Test Plan -> Thread Group -> Chrome Driver Config > Chrome tab* and modify *Path to Chromedriver* to suit your environment.  This is the full path to the executable, including *chromedriver* itself (e.g., /my/path/to/chromedriver). Then go to ```User Parameters``` and edit the values of parameters to suit your testing environment.
 *Let's externalize this later.*
 
 Run the test (*Run > Start*).  It will automatically launch an instance of Chrome and run automated tests.

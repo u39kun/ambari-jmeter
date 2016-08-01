@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1432775119000</longProp>
+        <longProp name="ThreadGroup.end_time">1432775119000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Parameters" enabled="true">
+          <collectionProp name="UserParameters.names">
+            <stringProp name="1708935282">AMBARI_URL</stringProp>
+            <stringProp name="-1059405643">MAX_WAIT_MS</stringProp>
+            <stringProp name="1328752080">CLUSTER_NAME</stringProp>
+          </collectionProp>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="-704717590">
+              <stringProp name="-856860802">http://viv-cluster-1.openstacklocal:8080/</stringProp>
+              <stringProp name="51347766">60000</stringProp>
+              <stringProp name="3118">c1</stringProp>
+            </collectionProp>
+          </collectionProp>
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+        </UserParameters>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig guiclass="com.googlecode.jmeter.plugins.webdriver.config.gui.ChromeDriverConfigGui" testclass="com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig" testname="jp@gc - Chrome Driver Config" enabled="true">
+          <stringProp name="WebDriverConfig.proxy_type">SYSTEM</stringProp>
+          <stringProp name="WebDriverConfig.proxy_pac_url"></stringProp>
+          <stringProp name="WebDriverConfig.http_host"></stringProp>
+          <intProp name="WebDriverConfig.http_port">8080</intProp>
+          <boolProp name="WebDriverConfig.use_http_for_all_protocols">true</boolProp>
+          <stringProp name="WebDriverConfig.https_host"></stringProp>
+          <intProp name="WebDriverConfig.https_port">8080</intProp>
+          <stringProp name="WebDriverConfig.ftp_host"></stringProp>
+          <intProp name="WebDriverConfig.ftp_port">8080</intProp>
+          <stringProp name="WebDriverConfig.socks_host"></stringProp>
+          <intProp name="WebDriverConfig.socks_port">8080</intProp>
+          <stringProp name="WebDriverConfig.no_proxy">localhost</stringProp>
+          <boolProp name="WebDriverConfig.maximize_browser">true</boolProp>
+          <boolProp name="WebDriverConfig.reset_per_iteration">false</boolProp>
+          <boolProp name="WebDriverConfig.dev_mode">true</boolProp>
+          <stringProp name="ChromeDriverConfig.chromedriver_path">chromedriver</stringProp>
+          <boolProp name="ChromeDriverConfig.android_enabled">false</boolProp>
+        </com.googlecode.jmeter.plugins.webdriver.config.ChromeDriverConfig>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Login Page" enabled="true">
+          <stringProp name="WebDriverSampler.script">WDS.log.info(&apos;AMBARI_URL=${AMBARI_URL}&apos;)
+
+WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;${AMBARI_URL}&apos;)
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Login to Dashboard" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait = new support_ui.WebDriverWait(WDS.browser, ${MAX_WAIT_MS})
+
+WDS.sampleResult.sampleStart()
+var username = WDS.browser.findElement(pkg.By.className(&apos;login-user-name&apos;))
+var password = WDS.browser.findElement(pkg.By.className(&apos;login-user-password&apos;))
+var loginButton = WDS.browser.findElement(pkg.By.className(&apos;login-btn&apos;))
+username.sendKeys([&apos;admin&apos;])
+password.sendKeys([&apos;admin&apos;])
+loginButton.click()
+wait.until(conditions.presenceOfElementLocated(pkg.By.linkText(&apos;Dashboard&apos;)))
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Services Metadata" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait=new support_ui.WebDriverWait(WDS.browser, 10)
+var ctx = org.apache.jmeter.threads.JMeterContextService.getContext()
+var vars = ctx.getVariables();
+WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;${AMBARI_URL}api/v1/clusters/${CLUSTER_NAME}/services?fields=ServiceInfo/state,ServiceInfo/maintenance_state,components/ServiceComponentInfo/component_name&amp;minimal_response=true&apos;)
+wait.until(conditions.presenceOfElementLocated(pkg.By.tagName(&apos;pre&apos;)))
+var ele = WDS.browser.findElement(pkg.By.tagName(&apos;pre&apos;))
+var jsonString = ele.getText()
+var json = JSON.parse(jsonString)
+var services = []
+json.items.forEach(function(element, index, array) {
+    services.push(element.ServiceInfo.service_name)
+})
+var services_string = JSON.stringify(services)
+WDS.log.info(services_string)
+vars.put(&apos;services&apos;,services_string)
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Hosts Info" enabled="true">
+          <stringProp name="TestPlan.comments">			</stringProp>
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait=new support_ui.WebDriverWait(WDS.browser, 10)
+var ctx = org.apache.jmeter.threads.JMeterContextService.getContext()
+var vars = ctx.getVariables();
+
+WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;${AMBARI_URL}api/v1/clusters/${CLUSTER_NAME}/hosts?fields=Hosts/public_host_name&amp;minimal_response=true&apos;)
+wait.until(conditions.presenceOfElementLocated(pkg.By.tagName(&apos;pre&apos;)))
+var ele = WDS.browser.findElement(pkg.By.tagName(&apos;pre&apos;))
+var jsonString = ele.getText()
+var json = JSON.parse(jsonString)
+var hosts = []
+json.items.forEach(function(element, index, arr) {
+    hosts.push(element.Hosts.public_host_name)
+})
+hosts_string = JSON.stringify(hosts)
+vars.put(&apos;hosts&apos;, hosts_string)
+WDS.log.info(hosts_string)
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Components Info" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait=new support_ui.WebDriverWait(WDS.browser, 10)
+var ctx = org.apache.jmeter.threads.JMeterContextService.getContext()
+var vars = ctx.getVariables();
+
+WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;${AMBARI_URL}api/v1/clusters/${CLUSTER_NAME}/components/?fields=ServiceComponentInfo/service_name,ServiceComponentInfo/category,ServiceComponentInfo/installed_count,ServiceComponentInfo/started_count,ServiceComponentInfo/init_count,ServiceComponentInfo/install_failed_count,ServiceComponentInfo/unknown_count,ServiceComponentInfo/total_count,ServiceComponentInfo/display_name,host_components/HostRoles/host_name&amp;minimal_response=true&apos;)
+wait.until(conditions.presenceOfElementLocated(pkg.By.tagName(&apos;pre&apos;)))
+var ele = WDS.browser.findElement(pkg.By.tagName(&apos;pre&apos;))
+var jsonString = ele.getText()
+var json = JSON.parse(jsonString)
+var hosts = vars.get(&apos;hosts&apos;)
+hosts = JSON.parse(hosts)
+var recommendations = {
+    blueprint: {
+        host_groups: []
+    },
+    blueprint_cluster_binding: {
+        host_groups: []
+    } 
+}
+for (var i = 0; i &lt; hosts.length; i++) {
+  var host_group = {
+    name: &quot;host-group-&quot; + (i + 1),
+    components: []
+  };
+  json.items.forEach(function(element, index, arr){
+    if(element.host_components.length) {
+      element.host_components.forEach(function(el, ind, a) {
+        if(el.HostRoles.host_name == hosts[i]) {
+            host_group.components.push({
+              name: el.HostRoles.component_name
+            });
+        }
+      })   
+    }
+  })
+  
+  recommendations.blueprint.host_groups.push(host_group);
+  recommendations.blueprint_cluster_binding.host_groups.push({
+    name: &quot;host-group-&quot; + (i + 1),
+    hosts: [{
+      fqdn: hosts[i]
+    }]
+  });
+}
+recommendations = JSON.stringify(recommendations)
+vars.put(&apos;recommendations&apos;,recommendations)
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Metadata API" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait=new support_ui.WebDriverWait(WDS.browser, 10)
+
+WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;${AMBARI_URL}api/v1/clusters/${CLUSTER_NAME}/configurations/service_config_versions?service_name=HDFS&amp;fields=service_config_version,user,hosts,group_id,group_name,is_current,createtime,service_name,service_config_version_note,stack_id,is_cluster_compatible&amp;minimal_response=true&amp;_=1469659019883&apos;)
+wait.until(conditions.presenceOfElementLocated(pkg.By.tagName(&apos;pre&apos;)))
+var ele = WDS.browser.findElement(pkg.By.tagName(&apos;pre&apos;))
+var jsonString = ele.getText()
+var json = JSON.parse(jsonString)
+WDS.log.info(jsonString)
+WDS.log.info(json.items[0].group_name)
+WDS.sampleResult.sampleEnd()</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Properties API" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait=new support_ui.WebDriverWait(WDS.browser, 10)
+var ctx = org.apache.jmeter.threads.JMeterContextService.getContext()
+var vars = ctx.getVariables();
+
+WDS.sampleResult.sampleStart()
+WDS.browser.get(&apos;${AMBARI_URL}api/v1/clusters/${CLUSTER_NAME}/configurations/service_config_versions?service_name.in(HDFS,RANGER_KMS,AMBARI_METRICS,RANGER,YARN)&amp;is_current=true&amp;fields=*&apos;)
+wait.until(conditions.presenceOfElementLocated(pkg.By.tagName(&apos;pre&apos;)))
+var ele = WDS.browser.findElement(pkg.By.tagName(&apos;pre&apos;))
+var jsonString = ele.getText()
+
+vars.put(&apos;configs&apos;, jsonString)
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler guiclass="com.googlecode.jmeter.plugins.webdriver.sampler.gui.WebDriverSamplerGui" testclass="com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler" testname="Load Recommendations API" enabled="true">
+          <stringProp name="WebDriverSampler.script">var pkg = JavaImporter(org.openqa.selenium)
+var support_ui = JavaImporter(org.openqa.selenium.support.ui.WebDriverWait)
+var conditions = org.openqa.selenium.support.ui.ExpectedConditions
+var wait=new support_ui.WebDriverWait(WDS.browser, 10)
+var ctx = org.apache.jmeter.threads.JMeterContextService.getContext()
+var vars = ctx.getVariables()
+
+WDS.sampleResult.sampleStart()
+var services = vars.get(&apos;services&apos;)
+services = JSON.parse(services)
+var hosts = vars.get(&apos;hosts&apos;)
+hosts = JSON.parse(hosts)
+var configs = vars.get(&apos;configs&apos;)
+configs = JSON.parse(configs)
+var _recommendations = vars.get(&apos;recommendations&apos;)
+recommendations = JSON.parse(_recommendations)
+var configurations = []
+configs.items.forEach(function(element, index, arr) {
+   element.configurations.forEach(function(ele, ind, a) {
+       configurations[ele.type] = {properties: ele.properties}
+   })   
+})
+recommendations.blueprint[&apos;configurations&apos;] = configurations
+var params = {
+    recommend: &quot;configurations&quot;,
+    hosts: hosts,
+    services: services,
+    recommendations: recommendations
+}
+params = JSON.stringify(params)
+var url = &apos;${AMBARI_URL}api/v1/stacks/HDP/versions/2.5/recommendations&apos;
+
+WDS.browser.executeScript(&apos;var http = new XMLHttpRequest();var url = &quot;&apos;+url+&apos;&quot;; window.params = &apos;+params+&apos;; window.params=JSON.stringify(window.params); http.open(&quot;POST&quot;, url, true); http.setRequestHeader(&quot;Content-type&quot;, &quot;application/x-www-form-urlencoded&quot;); http.setRequestHeader(&quot;X-Requested-By&quot;, &quot;X-Requested-By&quot;); http.setRequestHeader(&quot;X-Requested-With&quot;, &quot;XMLHttpRequest&quot;); http.onreadystatechange = function() { if(http.readyState == 4 &amp;&amp; http.status == 200) { document.getElementsByTagName(&quot;body&quot;)[0].innerHTML= &quot;&lt;div&gt;&lt;pre&gt;&quot; + http.responseText + &quot;&lt;/pre&gt;&lt;/div&gt;&quot;;} }; http.send(window.params); &apos;)
+wait.until(conditions.presenceOfElementLocated(pkg.By.tagName(&apos;div&apos;)))
+WDS.sampleResult.sampleEnd()
+</stringProp>
+          <stringProp name="WebDriverSampler.parameters"></stringProp>
+          <stringProp name="WebDriverSampler.language">javascript</stringProp>
+        </com.googlecode.jmeter.plugins.webdriver.sampler.WebDriverSampler>
+        <hashTree/>
+        <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
